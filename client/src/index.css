@@ -52,3 +52,17 @@ table th {
   border-bottom: 1px solid #eee;
   padding-bottom: 5px;
 }
+table button {
+  margin-left: 10px;
+}
+
+/* form */
+form > div {
+  margin-bottom: 10px;
+}
+label {
+  display: block;
+}
+input[type='submit'] {
+  margin-top: 10px;
+}
