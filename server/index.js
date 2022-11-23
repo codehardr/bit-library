@@ -3,10 +3,10 @@ import cors from 'cors'
 import session from 'express-session'
 
 // TEMP DATABASE IMPORT
-import database from './database/connect.js'
+// import database from './database/connect.js'
 
 // [CONTROLLERIŲ IMPORTAI]
-// import { Users, Salons, Services, Workers, Orders, Ratings } from './controller/index.js'
+import { Users, Categories, Books, Reservations, Ratings } from './controller/index.js'
 
 const app = express()
 
@@ -30,11 +30,10 @@ app.use(
 )
 
 // [CONTROLLERIŲ PRISKYRIMAI]
-// app.use('/api/users/', Users)
-// app.use('/api/salons/', Salons)
-// app.use('/api/services/', Services)
-// app.use('/api/workers/', Workers)
-// app.use('/api/orders/', Orders)
-// app.use('/api/ratings/', Ratings)
+app.use('/api/users/', Users)
+app.use('/api/categories/', Categories)
+app.use('/api/books/', Books)
+app.use('/api/reservations/', Reservations)
+app.use('/api/ratings/', Ratings)
 
 app.listen(process.env.PORT || 3000)

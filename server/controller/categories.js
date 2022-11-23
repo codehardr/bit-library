@@ -4,7 +4,7 @@ import db from '../database/connect.js'
 // import { adminAuth } from '../middleware/auth.js'
 
 const router = express.Router()
-const dbtable = db.ratings
+const dbtable = db.categories
 
 router.get('/', async (req, res) => {
   try {
