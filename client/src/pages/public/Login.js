@@ -21,7 +21,7 @@ const Login = () => {
         setNotification({ msg: resp.data.message, status: 'success' })
         window.scrollTo(0, 0)
         setTimeout(() => {
-          if (resp.data.user.role === 1) return navigate('/admin/salons/')
+          if (resp.data.user.role === 1) return navigate('/admin/books/')
           navigate('/')
         }, 1500)
       })

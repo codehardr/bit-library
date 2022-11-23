@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import axios from 'axios'
 
 import Header from './components/Header'
 import MainContext from './context/MainContext'
@@ -20,7 +21,13 @@ import Login from './pages/public/Login'
 const App = () => {
   const [notification, setNotification] = useState({ msg: '', status: '' })
 
-  const contextValues = { notification, setNotification }
+  const [userInfo, setUserInfo] = useState({})
+
+  const contextValues = { notification, setNotification, userInfo, setUserInfo }
+
+  useEffect(() => {
+    axios.get('/api/users/check-auth/').then(resp => setUserInfo(resp.data))
+  }, [])
 
   return (
     <BrowserRouter>
@@ -29,16 +36,20 @@ const App = () => {
         <div className="container">
           <Notification />
           <Routes>
-            <Route path="admin">
-              <Route path="books" element={<Books />} />
-              <Route path="books/new" element={<AddBook />} />
-              <Route path="books/edit/:id" element={<EditBook />} />
-              <Route path="users" element={<Users />} />
-              <Route path="users/edit/:id" element={<EditUser />} />
-            </Route>
+            {userInfo.role === 1 && (
+              <Route path="admin">
+                <Route path="books" element={<Books />} />
+                <Route path="books/new" element={<AddBook />} />
+                <Route path="books/edit/:id" element={<EditBook />} />
+                <Route path="users" element={<Users />} />
+                <Route path="users/edit/:id" element={<EditUser />} />
+              </Route>
+            )}
             <Route path="/" element={<PublicBooks />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
+
+            <Route path="*" element={<Login />} />
           </Routes>
         </div>
       </MainContext.Provider>

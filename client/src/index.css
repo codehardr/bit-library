@@ -11,20 +11,38 @@ a:link,
 a:visited {
   color: #eee;
 }
+
+/* header */
 header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid gold;
   gap: 30px;
   background-color: #444;
-  padding: 0 15px;
+  padding: 20px 30px;
 }
 header nav {
   display: flex;
+  gap: 40px;
+}
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+header div {
+  display: flex;
+  gap: 20px;
 }
 .logo {
   font-size: 2rem;
 }
+a.gold {
+  color: gold;
+}
+
+/* table */
 table {
   width: 100%;
   margin-bottom: 30px;
