@@ -11,3 +11,14 @@ a:link,
 a:visited {
   color: #eee;
 }
+header {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  gap: 30px;
+}
+header nav {
+  display: flex;
+}
+.logo {
+  font-size: 2rem;
+}

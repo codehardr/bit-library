@@ -9,8 +9,9 @@ const router = express.Router()
 const dbtable = db.books
 
 router.get('/', async (req, res) => {
+  const options = { include: { model: db.categories, attributes: ['name'] } }
   try {
-    const data = await dbtable.findAll()
+    const data = await dbtable.findAll(options)
     res.json(data)
   } catch (error) {
     console.log(error)

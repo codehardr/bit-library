@@ -7,6 +7,49 @@ import { auth } from '../middleware/auth.js'
 const router = express.Router()
 
 const saltRounds = 10
+const dbtable = db.users
+
+router.get('/', async (req, res) => {
+  try {
+    const data = await dbtable.findAll()
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Server error')
+  }
+})
+
+router.get('/single/:id', async (req, res) => {
+  try {
+    const data = await dbtable.findByPk(req.params.id)
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Server error')
+  }
+})
+
+router.put('/edit/:id', async (req, res) => {
+  try {
+    const data = await dbtable.findByPk(req.params.id)
+    await data.update(req.body)
+    res.send('Data successfully updated')
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Server error')
+  }
+})
+
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    const data = await dbtable.findByPk(req.params.id)
+    await data.destroy()
+    res.send('Data successfully removed')
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Server error')
+  }
+})
 
 router.post('/register', registerValidator, async (req, res) => {
   try {
