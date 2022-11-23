@@ -12,6 +12,11 @@ import EditBook from './pages/admin/EditBook'
 import Users from './pages/admin/Users'
 import EditUser from './pages/admin/EditUser'
 
+// PUBLIC Routes
+import PublicBooks from './pages/public/PublicBooks'
+import Register from './pages/public/Register'
+import Login from './pages/public/Login'
+
 const App = () => {
   const [notification, setNotification] = useState({ msg: '', status: '' })
 
@@ -31,6 +36,9 @@ const App = () => {
               <Route path="users" element={<Users />} />
               <Route path="users/edit/:id" element={<EditUser />} />
             </Route>
+            <Route path="/" element={<PublicBooks />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
           </Routes>
         </div>
       </MainContext.Provider>

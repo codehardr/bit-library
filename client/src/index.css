@@ -13,12 +13,24 @@ a:visited {
 }
 header {
   display: flex;
+  align-items: center;
   border-bottom: 1px solid #eee;
   gap: 30px;
+  background-color: #444;
+  padding: 0 15px;
 }
 header nav {
   display: flex;
 }
 .logo {
   font-size: 2rem;
+}
+table {
+  width: 100%;
+  margin-bottom: 30px;
+}
+table th {
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
 }

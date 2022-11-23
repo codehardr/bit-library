@@ -5,8 +5,24 @@ const Header = () => {
     <header>
       <div className="logo">Bit Library</div>
       <nav>
-        <div>Admin:</div>
         <ul>
+          <li>
+            <div>Public:</div>
+          </li>
+          <li>
+            <Link to="/">Books</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <div>Admin:</div>
+          </li>
           <li>
             <Link to="/admin/books">Books</Link>
           </li>
