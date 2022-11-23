@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize'
 import mysql from 'mysql2/promise'
 
 // [MODELIŲ IMPORTAI]
-import { Users } from '../model/index.js'
+import { Users, Categories, Books, Reservations, Ratings } from '../model/index.js'
 
 const database = {}
 
@@ -28,37 +28,27 @@ try {
 
   // [MODELIŲ PRISKYRIMAI IR RELIACIJOS]
   database.users = Users(sequelize)
-  // database.salons = Salons(sequelize)
-  // database.services = Services(sequelize)
-  // database.workers = Workers(sequelize)
-  // database.ratings = Ratings(sequelize)
-  // database.orders = Orders(sequelize)
+  database.categories = Categories(sequelize)
+  database.books = Books(sequelize)
+  database.reservations = Reservations(sequelize)
+  database.ratings = Ratings(sequelize)
 
-  // database.salons.hasMany(database.workers)
-  // database.workers.belongsTo(database.salons)
+  database.categories.hasMany(database.books)
+  database.books.belongsTo(database.categories)
 
-  // database.salons.hasMany(database.services)
-  // database.services.belongsTo(database.salons)
+  database.users.hasMany(database.reservations)
+  database.reservations.belongsTo(database.users)
 
-  // database.users.hasMany(database.orders)
-  // database.orders.belongsTo(database.users)
+  database.users.hasMany(database.ratings)
+  database.ratings.belongsTo(database.users)
 
-  // database.services.hasMany(database.orders)
-  // database.orders.belongsTo(database.services)
+  database.books.hasMany(database.reservations)
+  database.reservations.belongsTo(database.books)
 
-  // database.users.hasMany(database.ratings)
-  // database.ratings.belongsTo(database.users)
+  database.books.hasMany(database.ratings)
+  database.ratings.belongsTo(database.books)
 
-  // database.workers.hasMany(database.ratings)
-  // database.ratings.belongsTo(database.workers)
-
-  // database.workers.hasMany(database.orders)
-  // database.orders.belongsTo(database.workers)
-
-  // database.orders.hasOne(database.ratings)
-  // database.ratings.belongsTo(database.orders)
-
-  await sequelize.sync({ alter: true }) // change while working on models!
+  await sequelize.sync({ alter: false }) // change while working on models!
 } catch {
   console.log('Database connection failed')
 }

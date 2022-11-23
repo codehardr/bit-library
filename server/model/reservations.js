@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize'
 
-const Orders = sequelize => {
+const Reservations = sequelize => {
   const Schema = {
-    order_date: {
+    reservation_date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
@@ -12,7 +12,7 @@ const Orders = sequelize => {
       defaultValue: false,
     },
   }
-  return sequelize.define('orders', Schema)
+  return sequelize.define('reservations', Schema)
 }
 
-export default Orders
+export default Reservations

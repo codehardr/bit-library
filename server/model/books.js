@@ -1,21 +1,21 @@
 import { DataTypes } from 'sequelize'
 
-const Services = sequelize => {
+const Books = sequelize => {
   const Schema = {
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    duration: {
+    author: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    price: {
+    cover: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   }
-  return sequelize.define('services', Schema)
+  return sequelize.define('books', Schema)
 }
 
-export default Services
+export default Books
